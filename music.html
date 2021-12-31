@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel ="stylesheet" href = "style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <div class="main_div">
+        <div class="music_container">
+            <h2 id="title">DHEERE DHEERE SE MERI ZINDAGI</h2>
+            <h3 id="artist">Kumar Sanu, Anuradha Paudwal</h3>
+            <div class="img_container">
+                <img src = "images/m1.jpg">
+            </div>
+            <audio src = "music/m1.mp3"></audio>
+            <div class="music_controls">
+                <i class="fas fa-backward" id="prev" title="Previous"></i>
+                <i class="fas fa-play main_button" id="play" title="Play"></i>
+                <i class="fas fa-forward" id="next" title="Next"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const music = document.querySelector("audio");
+        const image = document.querySelector("img");
+        const play = document.getElementById("play");
+        const title = document.getElementById("title");
+        const artist = document.getElementById("artist");
+        const prev = document.getElementById("prev");
+        const next = document.getElementById("next");
+
+        const songs = [
+          {
+            name: "m1",
+            title: "Dheere Dheere Se Meri Zindagi",
+            artist: "Kumar Sanu, Anuradha Paudwal",
+          },
+          {
+            name: "m2",
+            title: "Bas Ek Sanam Chahiye",
+            artist: "Kumar Sanu",
+          },
+          {
+            name: "m3",
+            title: "Main Duniya Bhula Dunga",
+            artist: "Kumar Sanu, Anuradha Paudwal",
+          },
+          {
+            name: "m4",
+            title: "Jaane Jigar Jaaneman",
+            artist: "Kumar Sanu, Anuradha Paudwal",
+          },
+          {
+            name: "m5",
+            title: "Tere Dar Par Sanam",
+            artist: "Kumar Sanu",
+          },
+          {
+            name: "m6",
+            title: "Dil Mein Sanam Ki Surat",
+            artist: "Kumar Sanu, Alka Yagnik",
+          },
+          {
+            name: "m7",
+            title: "Badalon Mein Chup Raha",
+            artist: "Kumar Sanu, Alka Yagnik",
+          },
+          {
+            name: "m8",
+            title: "Pehla Nasha",
+            artist: "Udit Narayan, Sadhna Sargam",
+          },
+          {
+            name: "m9",
+            title: "Ae Mere Humsafar",
+            artist: "Udit Narayan, Alka Yagnik",
+          },
+          {
+            name: "m10",
+            title: "Akele Hain Toh Kya Gham Hai",
+            artist: "Udit Narayan, Alka Yagnik",
+          },
+          {
+            name: "m11",
+            title: "Papa Kehte Hain",
+            artist: "Udit Narayan",
+          },
+          {
+            name: "m12",
+            title: "Duniya Haseeno Ka Mela",
+            artist: "Udit Narayan",
+          },
+          {
+            name: "m13",
+            title: "Mushkil Bada Ye Pyar Hai",
+            artist: "Udit Narayan, Alka Yagnik",
+          },
+          {
+            name: "m14",
+            title: "Mere Khwabon Mein Tu",
+            artist: "Kumar Sanu, Alka Yagnik",
+          },
+          {
+            name: "m15",
+            title: "Ye Pyar Kya Hai",
+            artist: "Kumar Sanu, Alka Yagnik",
+          },
+          {
+            name: "m16",
+            title: "Baazigar O Baazigar",
+            artist: "Kumar Sanu, Alka Yagnik",
+          },
+          {
+            name: "m17",
+            title: "Ye Kali Kali Aankhein",
+            artist: "Kumar Sanu, Anu Malik",
+          },
+          {
+            name: "m18",
+            title: "Chupana Bhi Nahi Aata",
+            artist: "Pankaj Udhaas",
+          },
+          {
+            name: "m19",
+            title: "Aisi Deewangi",
+            artist: "Vinod Rathod, Alka Yagnik",
+          },
+          {
+            name: "m20",
+            title: "Koi Na Koi Chahiye",
+            artist: "Vinod Rathod",
+          },
+          {
+            name: "m21",
+            title: "Tujhe Dekha Toh",
+            artist: "Kumar Sanu, Lata Mangeshkar",
+          },
+          {
+            name: "m22",
+            title: "Mere Khwabon Mein Jo Aaye",
+            artist: "Lata Mangeshkar",
+          },
+          {
+            name: "m23",
+            title: "Ho Gaya Hai Tujhko",
+            artist: "Udit Narayan, Lata Mangeshkar",
+          },
+          {
+            name: "m24",
+            title: "Tujhe Na Dekhun Toh Chain",
+            artist: "Kumar Sanu, Alka Yagnik",
+          },
+          {
+            name: "m25",
+            title: "Tumhe Dekhen Meri Aankhen",
+            artist: "Kumar Sanu, Alka Yagnik",
+          },
+          {
+            name: "m26",
+            title: "Dil Cheer Ke Dekh",
+            artist: "Kumar Sanu",
+          },
+          {
+            name: "m27",
+            title: "Didi Tera Dewar Deewana",
+            artist: "S.P.Balasubhramanyam, Lata Mangeshkar",
+          },
+          {
+            name: "m28",
+            title: "Dil Deewana",
+            artist: "S.P.Balasubhramanyam",
+          },
+          {
+            name: "m29",
+            title: "Mere Rang Mein",
+            artist: "S.P.Balasubhramanyam",
+          },
+          {
+            name: "m30",
+            title: "Gazar Ne Kiya Hai Ishara",
+            artist: "Sadhna Sargam, Alka Yagnik",
+          },
+          {
+            name: "m31",
+            title: "Tirchi Topi Wale",
+            artist: "Amit Kumar, Sapna Mukherjee",
+          },
+          {
+            name: "m32",
+            title: "Saat Samundar",
+            artist: "Sadhna Sargam",
+          },
+          {
+            name: "m33",
+            title: "Aankhon Mein Hai Kya",
+            artist: "Udit Narayan, Alka Yagnik",
+          },
+          {
+            name: "m34",
+            title: "Mujhe Neend Na Aaye",
+            artist: "Udit Narayan, Anuradha Paudwal",
+          },
+          {
+            name: "m35",
+            title: "HUmma Humma",
+            artist: "A.R.Rahman, Remo Fernandes",
+          },
+          {
+            name: "m36",
+            title: "Tu Mile Dil Khile",
+            artist: "Kumar Sanu, Alka Yagnik",
+          },
+          {
+            name: "m37",
+            title: "Rooth Na Jana",
+            artist: "Kumar Sanu",
+          },
+          {
+            name: "m38",
+            title: "Bin Tere Sanam",
+            artist: "Udit Narayan, Kavita Krishnamurthy",
+          },
+          {
+            name: "m39",
+            title: "Jooma Chumma Dede",
+            artist: "Sudesh Bhosle, Kavita Krishnamurthy",
+          },
+          {
+            name: "m40",
+            title: "Sochna Kya Jo Bhi Hoga",
+            artist: "Kumar Sanu, Asha Bhosle",
+          },
+          {
+            name: "m41",
+            title: "Soldier Soldier",
+            artist: "Kumar Sanu, Alka Yagnik",
+          },
+          {
+            name: "m42",
+            title: "Mere Khwabon",
+            artist: "Alka Yagnik",
+          },
+          {
+            name: "m43",
+            title: "Mehfil Mein Baar Baar",
+            artist: "Kumar Sanu, Alka Yagnik",
+          },
+          {
+            name: "m44",
+            title: "Ye Dua Hai Meri Rab Se",
+            artist: "Kumar Sanu, Alka Yagnik",
+          },
+          {
+            name: "m45",
+            title: "Kabhi Bhula Kabhi Yaad",
+            artist: "Mukul Agarwal, Alka Yagnik",
+          },
+
+
+        ]
+
+        let isPlaying = false;
+
+        const playMusic = () =>{
+            isPlaying = true;
+            music.play();   
+            image.classList.add('anime');
+            play.classList.replace('fa-play', 'fa-pause');
+        };
+
+       const pauseMusic = () =>{
+            isPlaying = false;
+            music.pause();   
+            image.classList.remove('anime');
+            play.classList.replace('fa-pause', 'fa-play');
+        };
+
+        play.addEventListener('click', ()=>{
+            if(isPlaying)
+            {
+                pauseMusic();
+            }
+            else
+            {
+                playMusic();
+            }
+        });
+
+        const loadSong = (songs) =>{
+            title.textContent = songs.title;
+            artist.textContent = songs.artist;
+            music.src = "music/" + songs.name + ".mp3";
+            image.src = "images/" + songs.name + ".jpg";
+        };
+
+        songIndex = 0;
+
+        const nextSong =  () =>{
+            songIndex = (songIndex+1) % songs.length;
+            loadSong(songs[songIndex]);
+            playMusic();
+        };
+
+        const prevSong =  () =>{
+            songIndex = (songIndex-1 + songs.length) % songs.length;
+            loadSong(songs[songIndex]);
+            playMusic();
+        };
+
+        next.addEventListener('click', nextSong);
+        prev.addEventListener('click', prevSong);
+    </script>
+
+
+</body>
+</html>
